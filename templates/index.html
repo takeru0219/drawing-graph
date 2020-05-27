@@ -1,33 +1,25 @@
-<!--index.html-->
-<!DOCTYPE html>
+{% extends "layout.html" %}
+{% block body %}
+<h2>入力フォーム</h2>
 
-<html>
-    <head>
-        <title>グラフ作成</title>
-        <script type = 'text/javascript' src = "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type = 'text/javascript'>
-            fuction drawGraph(obj) {
-                var idx = obj.selectedIndex;
-                var value = obj.options[idx].value;
-                var plotdata = document.getElementById('plotimg');
-                $.get('/image' + value, function(data) {
-                    plotdata.src = 'data:image/png.base64,' + data;
-                });
-            };
-            $(document).ready(function() {
-                var target = document.getElementById('selector');
-                drawGraph(target);
-            });
-        </script>
-    </head>
+<form action = "show/" method = "POST">
 
-    <body>
-        <h1>グラフ出力</h1>
-        <div>
-            <p>select a function</p>
-            <select id = selector onchange = 'drawGraph(this)'>
-                <option value =
-            </select>
-        </div>
-    </body>
-</html>
+<h3>式の入力</h3>
+<p>式1</p>
+<p><input type="text" name="formura_1" size="50" minlength="1" maxlength="1000"　required  placeholder="x**3 + x + 2"></p>
+<p>式2</p>
+<p><input type="text" name="formura_2" size="50" minlength="1" maxlength="1000"　required  placeholder="x**2 + x + 2"></p>
+<p>式3</p>
+<p><input type="text" name="formura_3" size="50" minlength="1" maxlength="1000"　required  placeholder="x**2 + x + 2"></p>
+<p>式4</p>
+<p><input type="text" name="formura_4" size="50" minlength="1" maxlength="1000"　required  placeholder="x**2 + x + 2"></p>
+<p>式5</p>
+<p><input type="text" name="formura_5" size="50" minlength="1" maxlength="1000"　required  placeholder="x**2 + x + 2"></p>
+
+<h3>領域の選択</h3>
+
+
+<p><input class="button" type="submit" value="グラフを生成"></p>
+</form>
+
+{% endblock %}
