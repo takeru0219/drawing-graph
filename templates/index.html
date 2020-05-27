@@ -1,0 +1,33 @@
+<!--index.html-->
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>グラフ作成</title>
+        <script type = 'text/javascript' src = "https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type = 'text/javascript'>
+            fuction drawGraph(obj) {
+                var idx = obj.selectedIndex;
+                var value = obj.options[idx].value;
+                var plotdata = document.getElementById('plotimg');
+                $.get('/image' + value, function(data) {
+                    plotdata.src = 'data:image/png.base64,' + data;
+                });
+            };
+            $(document).ready(function() {
+                var target = document.getElementById('selector');
+                drawGraph(target);
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1>グラフ出力</h1>
+        <div>
+            <p>select a function</p>
+            <select id = selector onchange = 'drawGraph(this)'>
+                <option value =
+            </select>
+        </div>
+    </body>
+</html>
